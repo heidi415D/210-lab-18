@@ -18,4 +18,27 @@ void addToHead(double rate, string comm){
     head = newNode; // update head to new node
 }
 
-int main() {}
+int main() {
+    cout << "which linked list method should we use?\n";
+    cout << "[1] Add new nodes at head\n";
+    cout << "[2] Add new nodes at tail\n";
+    cout << "Choice: "
+
+    int choice;
+    cin >> choice;
+
+    double rating;
+    string comment;
+
+    cout << "Enter review rating 0-5: ";
+    cin >> rating;
+
+    cout << "Enter review comment: ";
+    getline(cin, comment); 
+
+    addToHead(rating, comment);
+
+    cout << "Data added!" << endl;
+
+    return 0;
+}
