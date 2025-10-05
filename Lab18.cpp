@@ -2,7 +2,7 @@
 #include <string>
 using namespace std;
 
-struct Node{
+struct Node {
     double rating; // movie rating
     string comment; // movie comment
     Node* next; // pointer to next node
@@ -10,12 +10,43 @@ struct Node{
 
 Node* head;
 
+// adds new node at head
 void addToHead(double rate, string comm){
     Node* newNode = new Node; // memory allocation
     newNode->rating = rate; // set rating
     newNode->comment = comm; // set comment
     newNode->next = head; // point new node to current head
     head = newNode; // update head to new node
+}
+
+// adds new node at tail
+void addToTail(double rate, string comm) {
+    Node* newNode = new Node; // memory allocation
+    newNode->rating = rate; // set rating
+    newNode->comment = comm; // set comment
+    newNode->next = nullptr; // new node points to null
+
+    if (head == nullptr){
+        head = newNode;
+        return;
+    }
+
+    Node* temp = head;
+    while( temp->next != nullptr) {
+        temp = temp->next;
+    }
+    temp->next = newNode;
+}
+
+void displayReviews() {
+    Node* temp = head; // start at head
+    int count = 1;
+    while (temp!= nullptr) {
+        cout << "> Review #" << count << ": "
+            << temp->rating << ": " << temp->comment << endl;
+        temp = temp->next; // move to next node
+        count++; // increment review count
+    }
 }
 
 int main() {
