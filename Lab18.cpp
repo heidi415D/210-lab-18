@@ -44,7 +44,7 @@ void displayReviewsAndAverage() {
     int count = 0; // start at 0, increment for each review
     double sum = 0.0;
 
-    if (temp){ 
+    if (!temp){ 
         cout << "No reviews to display.\n";
         return;
     }
