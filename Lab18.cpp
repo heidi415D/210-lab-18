@@ -21,7 +21,7 @@ void addToHead(double rate, string comm){
 
 // adds new node at tail
 void addToTail(double rate, string comm) {
-    Node* newNode = new Node; // creeanew node
+    Node* newNode = new Node; // creating node
     newNode->rating = rate; // set rating
     newNode->comment = comm; // set comment
     newNode->next = nullptr; // new node points to null
@@ -60,16 +60,27 @@ int main() {
 
     double rating;
     string comment;
+    char more;
 
+   do {
     cout << "Enter review rating 0-5: ";
     cin >> rating;
-
+    cin.ignore();
     cout << "Enter review comment: ";
     getline(cin, comment); 
 
-    addToHead(rating, comment);
+    if (choice == 1) // select add mode based on choice
+        addToHead(rating, comment);
+    else
+        addToTail(rating, comment);
 
-    cout << "Data added!" << endl;
+    cout << "Enter another review? Y/N: ";
+    cin >> more;
+    cin.ignore();
+} while (tolower(more) == 'y');
+
+cout << "Outputting all reviews:\n";
+displayReviews(); // prints all reviews
 
     return 0;
 }
