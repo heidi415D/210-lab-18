@@ -21,7 +21,7 @@ void addToHead(double rate, const string& comm){
 }
 
 // adds new node at tail
-void addToTail(double rate, string comm) {
+void addToTail(double rate, const string& comm) {
     Node* newNode = new Node; // allocate node
     newNode->rating = rate; // set rating
     newNode->comment = comm; // set comment
@@ -58,13 +58,13 @@ void displayReviewsAndAverage() {
          count++; // increment review count        
     }
 
-    double avergae = sum;
+    double average = sum / count; // compute average
     cout << "    > Average: " << fixed << setprecision(5) 
-         << avergae << endl;
+         << average << endl;
 }
 
 int main() {
-    cout << "which linked list method should we use?\n";
+    cout << "Which linked list method should we use?\n";
     cout << "[1] Add new nodes at head\n";
     cout << "[2] Add new nodes at tail\n";
     cout << "Choice: ";
