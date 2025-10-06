@@ -21,7 +21,7 @@ void addToHead(double rate, string comm){
 
 // adds new node at tail
 void addToTail(double rate, string comm) {
-    Node* newNode = new Node; // memory allocation
+    Node* newNode = new Node; // creeanew node
     newNode->rating = rate; // set rating
     newNode->comment = comm; // set comment
     newNode->next = nullptr; // new node points to null
