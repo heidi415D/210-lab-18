@@ -60,17 +60,18 @@ void displayReviewsAndAverage() {
 
     double avergae = sum;
     cout << "    > Average: " << fixed << setprecision(5) 
-         << average << endl;
+         << avergae << endl;
 }
 
 int main() {
     cout << "which linked list method should we use?\n";
     cout << "[1] Add new nodes at head\n";
     cout << "[2] Add new nodes at tail\n";
-    cout << "Choice: "
+    cout << "Choice: ";
 
-    int choice;
-    cin >> choice;
+    int choice; 
+    cin >> choice; // read mode 1 or 2
+    cin.ignore(); // clear newline from input buffer
 
     double rating;
     string comment;
@@ -78,23 +79,24 @@ int main() {
 
    do {
     cout << "Enter review rating 0-5: ";
-    cin >> rating;
-    cin.ignore();
+    cin >> rating; // read rating
+    cin.ignore(); // clear newline so getline works
+
     cout << "Enter review comment: ";
-    getline(cin, comment); 
+    getline(cin, comment); // read full line comment
 
     if (choice == 1) // select add mode based on choice
-        addToHead(rating, comment);
+        addToHead(rating, comment); 
     else
         addToTail(rating, comment);
 
     cout << "Enter another review? Y/N: ";
-    cin >> more;
-    cin.ignore();
+    cin >> more; // read Y/N answer
+    cin.ignore(); // clear newline for next loop
 } while (more == 'y' || more == 'Y');
 
 cout << "Outputting all reviews:\n";
-displayReviews(); // prints all reviews
+displayReviewsAndAverage(); // prints all reviews
 
     return 0;
 }
