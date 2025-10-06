@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <iomanip> // for setprecision
 using namespace std;
 
 struct Node {
@@ -11,8 +12,8 @@ struct Node {
 Node* head;
 
 // adds new node at head
-void addToHead(double rate, string comm){
-    Node* newNode = new Node; // memory allocation
+void addToHead(double rate, const string& comm){
+    Node* newNode = new Node; // allocate new node
     newNode->rating = rate; // set rating
     newNode->comment = comm; // set comment
     newNode->next = head; // point new node to current head
@@ -21,38 +22,40 @@ void addToHead(double rate, string comm){
 
 // adds new node at tail
 void addToTail(double rate, string comm) {
-    Node* newNode = new Node; // creating node
+    Node* newNode = new Node; // allocate node
     newNode->rating = rate; // set rating
     newNode->comment = comm; // set comment
-    newNode->next = nullptr; // new node points to null
+    newNode->next = nullptr; // tails next is always nullptr
 
-    if (head == nullptr){
-        head = newNode;
+    if (head == nullptr){ // if list empt, new node is head
+        head = newNode; // set head and return
         return;
     }
 
-    Node* temp = head;
+    Node* temp = head; // start at head
     while( temp->next != nullptr) {
-        temp = temp->next;
+        temp = temp->next; // advance to last node
     }
-    temp->next = newNode;
+    temp->next = newNode; // link last node to new node
 }
 
 void displayReviewsAndAverage() {
     Node* temp = head; // start at head
-    int count = 1;
-    double sum = 0.0
+    int count = 0; // start at 0, increment for each review
+    double sum = 0.0;
 
-    if (temp){
+    if (temp){ 
         cout << "No reviews to display.\n";
         return;
     }
 
-    while (temp!= nullptr) {
-        cout << "> Review #" << count << ": "
+    while (temp!= nullptr) { // traverse all nodes
+       cout << "     > Review #" << (count + 1) << ": "
+            << fixed << setprecision(1) 
             << temp->rating << ": " << temp->comment << endl;
-        temp = temp->next; // move to next node
-        count++; // increment review count
+         sum += temp->rating; // accumulate ratings
+         temp = temp->next; // advance to next node
+         count++; // increment review count        
     }
 
     double avergae = sum;
@@ -88,7 +91,7 @@ int main() {
     cout << "Enter another review? Y/N: ";
     cin >> more;
     cin.ignore();
-} while (tolower(more) == 'y');
+} while (more == 'y' || more == 'Y');
 
 cout << "Outputting all reviews:\n";
 displayReviews(); // prints all reviews
