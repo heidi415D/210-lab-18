@@ -59,7 +59,7 @@ void displayReviewsAndAverage() {
     }
 
     double average = sum / count; // compute average
-    cout << "    > Average: " << fixed << setprecision(5) 
+    cout << "     > Average: " << fixed << setprecision(5) 
          << average << endl;
 }
 
