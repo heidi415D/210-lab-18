@@ -38,15 +38,26 @@ void addToTail(double rate, string comm) {
     temp->next = newNode;
 }
 
-void displayReviews() {
+void displayReviewsAndAverage() {
     Node* temp = head; // start at head
     int count = 1;
+    double sum = 0.0
+
+    if (temp){
+        cout << "No reviews to display.\n";
+        return;
+    }
+
     while (temp!= nullptr) {
         cout << "> Review #" << count << ": "
             << temp->rating << ": " << temp->comment << endl;
         temp = temp->next; // move to next node
         count++; // increment review count
     }
+
+    double avergae = sum;
+    cout << "    > Average: " << fixed << setprecision(5) 
+         << average << endl;
 }
 
 int main() {
