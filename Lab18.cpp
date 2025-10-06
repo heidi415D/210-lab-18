@@ -9,7 +9,7 @@ struct Node {
     Node* next; // pointer to next node
 };
 
-Node* head;
+Node* head = nullptr; // initialize head to nullptr
 
 // adds new node at head
 void addToHead(double rate, const string& comm){
